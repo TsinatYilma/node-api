@@ -1,0 +1,23 @@
+{
+  "name": "@apps/node-api",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^8.9.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.3",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^20.3.1",
+    "nodemon": "^3.0.1",
+    "typescript": "^5.1.3"
+  }
+}
