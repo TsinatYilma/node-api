@@ -1,8 +1,8 @@
 // utils/authGuard.ts
 import { IncomingMessage, ServerResponse } from 'http';
-import jwt from 'jsonwebtoken';
-import { User } from '../models/User';
+import { User } from '../models/User.model';
 
+const jwt: any = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey';
 
 // Middleware-like function to protect routes
@@ -10,7 +10,7 @@ export async function authGuard(req: IncomingMessage, res: ServerResponse): Prom
   const authHeader = req.headers['authorization'] || req.headers['Authorization'];
   if (!authHeader) {
     res.writeHead(401, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ message: 'Authorization header missing' }));
+    res.end(JSON.stringify({ message: 'Authorization header missing meee' }));
     return null;
   }
 

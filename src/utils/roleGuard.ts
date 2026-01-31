@@ -1,6 +1,6 @@
 // utils/roleGuard.ts
 import { ServerResponse } from 'http';
-import { User, Role } from '../models/User';
+import { User, Role } from '../models/User.model';
 
 export async function roleGuard(
   userId: string,

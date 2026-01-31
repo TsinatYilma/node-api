@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,           // avoids errors in node_modules
 
-    "allowJs": false,
+    "allowJs": true,
     "checkJs": false,
 
     "types": ["node"],              // ensures Node globals like JSON, Buffer, process
@@ -24,9 +24,9 @@
     "outDir": "dist",
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/types/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
-
+ 
 
   

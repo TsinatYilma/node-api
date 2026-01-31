@@ -1,7 +1,8 @@
 
-import { User, IUser, Role } from '../models/User';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { User, IUser, Role } from '../models/User.model';
+
+const bcrypt: any = require('bcryptjs');
+const jwt: any = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey';
 
@@ -13,7 +14,7 @@ interface SignupDTO {
   role?: Role;
 }
 interface user{
-  id: string;
+  _id: string;
   fullName: string;
   email: string;
   password: string;
@@ -74,11 +75,11 @@ export async function login(dto: LoginDTO): Promise<TokenResponse> {
 // Get all users
 export async function getAllUsers(): Promise<Array<{ id: string; fullName: string; email: string; role: Role }>> {
   const users = await User.find({});
-  return users.map((u: user ) => ({
+  return users.map((u: IUser ) => ({
     id: u._id.toString(),
     fullName: u.fullName,
     email: u.email,
-    role: u.role,
+    role: u.role || "admin",
   }));
 }
 
