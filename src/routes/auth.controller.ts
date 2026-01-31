@@ -1,5 +1,5 @@
 import { IncomingMessage, ServerResponse } from 'http';
-import * as authService from '../services/authService';
+import * as authService from '../services/authService.service';
 import { authGuard } from '../utils/authGuard';
 import { parse } from '../utils/otherhelper';
 import { roleGuard } from '../utils/roleGuard';
@@ -21,8 +21,6 @@ export default async function handleAuth(req: IncomingMessage, res: ServerRespon
       return res.end(JSON.stringify(result));
     }
 
-    const auth = await authGuard(req, res);
-    if (!auth) return;
 
     if (req.method === 'GET' && req.url === '/auth/allUsers') {
       const users = await authService.getAllUsers();
