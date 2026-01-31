@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import handleAuth from './routes/auth.controller';
 import handleMembers from './routes/members.controller';
+import handleBooks from './routes/books.controller'
+import handleBorrowedBooks from './routes/borrowedBooks.controller'
 
 dotenv.config();
 
@@ -50,6 +52,14 @@ const server = http.createServer(async (req: IncomingMessage, res: ServerRespons
     // /members/* routes
     if (req.url?.startsWith('/members')) {
       await handleMembers(req, res);
+      return;
+    }
+    if (req.url?.startsWith('/books')) {
+      await handleBooks(req, res);
+      return;
+    }
+    if (req.url?.startsWith('/borrowedBooks')) {
+      await handleBorrowedBooks(req, res);
       return;
     }
 
