@@ -31,7 +31,7 @@ export default async function handleBorrowedBooks(req: IncomingMessage, res: Ser
     // -----------------------
     // POST /borrowedBooks/borrowed - Borrow book (admin only)
     if (url === '/borrowedBooks/borrowed' && method === 'POST') {
-      if (!checkRole(req, [Role.LIBRARY_ADMIN])) {
+      if (checkRole(req, [Role.LIBRARY_ADMIN])) {
         res.writeHead(403, { 'Content-Type': 'application/json' });
         return res.end(JSON.stringify({ message: 'Forbidden' }));
       }
