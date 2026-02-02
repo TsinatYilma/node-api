@@ -37,7 +37,7 @@ export default async function handleBooks(
     }
 
     if (method === 'POST' && url === '/books/addBook') {
-      if (!checkRole(req, [Role.LIBRARY_ADMIN])) {
+      if (checkRole(req, [Role.LIBRARY_ADMIN])) {
         res.writeHead(403, { 'Content-Type': 'application/json' });
         return res.end(JSON.stringify({ message: 'Forbidden' }));
       }
